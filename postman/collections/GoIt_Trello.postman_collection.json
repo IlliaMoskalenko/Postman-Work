@@ -578,13 +578,13 @@
   ],
   "variable": [
     {
-      "id": "80c527eb-24ab-400e-8652-44c15da0e09c",
+      "id": "184523ad-49f9-4e96-ac27-89fd84239840",
       "key": "myKey",
       "value": "212fc3f4f30dc9590e62ec87745162ce",
       "type": "string"
     },
     {
-      "id": "de6011f8-679e-429a-8dec-f60fac37f8c8",
+      "id": "1969915c-50dd-4a16-9c1e-e1dfc5bb2798",
       "key": "myToken",
       "value": "ATTAdd781bafb145e7d7f5e1db452c87e6f6211a0909548f2d7b73b48c7aad91a5afDFB3BF68",
       "type": "string"
