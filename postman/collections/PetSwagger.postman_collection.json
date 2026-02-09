@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "b8314bc4-9201-40e8-90f4-2f4312dc20cb",
+    "name": "PetSwagger",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create user list",
+      "id": "84828ee8-8647-4eff-b566-fbccb76246c7",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 2013,\r\n  \"username\": \"oldhaunter\",\r\n  \"firstName\": \"illia\",\r\n  \"lastName\": \"mbk\",\r\n  \"email\": \"string\",\r\n  \"password\": \"string\",\r\n  \"phone\": \"string\",\r\n  \"userStatus\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get by user name",
+      "id": "97b48de6-3a15-471c-a083-a374782e3330",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/oldhanter",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "oldhanter"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Updated user",
+      "id": "b76a0c23-11fc-49b3-9d56-c1d3bcbe40e5",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 2013,\r\n  \"username\": \"oldhanter\",\r\n  \"firstName\": \"ilya\",\r\n  \"lastName\": \"rsd\",\r\n  \"email\": \"string\",\r\n  \"password\": \"1234\",\r\n  \"phone\": \"string\",\r\n  \"userStatus\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/oldhanter",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "oldhanter"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete user",
+      "id": "a3d15b8f-23e3-4f28-a026-c88ca00a0fba",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/oldhanter",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "oldhanter"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Logs user into system",
+      "id": "1061e08f-9db5-4e35-bee4-5be03a7aeca4",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/login?username=oldhaunter&password=1234",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "login"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "oldhaunter"
+            },
+            {
+              "key": "password",
+              "value": "1234"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "id": "553f9d69-4808-4fa2-9533-ffedbe30b4e6",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/logout?username=oldhaunter",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "logout"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "oldhaunter"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "0e0af02a-acfb-4aaf-8e01-2ee2bc6e7f82",
+      "key": "finduser",
+      "value": "2013"
+    }
+  ]
+}

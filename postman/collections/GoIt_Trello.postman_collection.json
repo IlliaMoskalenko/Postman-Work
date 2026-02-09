@@ -1,0 +1,593 @@
+{
+  "info": {
+    "_postman_id": "44a57ffb-771d-4353-b82c-7f9a4104327a",
+    "name": "GoIt_Trello",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "item": [
+        {
+          "name": "InfoAllBoards",
+          "id": "7a99fa0f-dec4-46d3-a7ae-dbdabaea9d70",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/members/me/boards?key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "members",
+                "me",
+                "boards"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get_Cards_on_a_Board",
+          "id": "b1dc4a1c-6039-4d79-9b0e-23d075477fae",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/boards/68b7016ea803b4c81ae80516/cards?key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "boards",
+                "68b7016ea803b4c81ae80516",
+                "cards"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "6f6dd0c6-5a84-462c-850f-92ab8836ae55"
+    },
+    {
+      "name": "Post",
+      "item": [
+        {
+          "name": "CreateBoard",
+          "id": "4f82708f-57df-4804-8206-814c2b53dcfa",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/boards/?name=My First API Testing&key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "boards",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "My First API Testing"
+                },
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create_List_Left",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf55ed02-c153-4213-8341-7b91de31d665",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "pm.test(\"Поле name існує і є рядком\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"name\");\r",
+                  "  pm.expect(json.name).to.be.a(\"string\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "79a505dd-82ff-45e6-b7dc-e7d4637adc77",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/lists?name={Left}&idBoard=68b7016ea803b4c81ae80516&key={{myKey}}&token={{myToken}}&pos=top",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "lists"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "{Left}"
+                },
+                {
+                  "key": "idBoard",
+                  "value": "68b7016ea803b4c81ae80516"
+                },
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                },
+                {
+                  "key": "pos",
+                  "value": "top"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create_List_Right",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61021711-6ae0-42fa-9554-ffe56d1d9a1b",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 400ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+                  "});\r",
+                  "pm.test(\"Поле name існує і є рядком\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"name\");\r",
+                  "  pm.expect(json.name).to.be.a(\"string\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "57390f65-f0c4-4ddf-ae77-76b9334f3637",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/lists?name={Right}&idBoard=68b7016ea803b4c81ae80516&key={{myKey}}&token={{myToken}}&pos=bottom",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "lists"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "{Right}"
+                },
+                {
+                  "key": "idBoard",
+                  "value": "68b7016ea803b4c81ae80516"
+                },
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                },
+                {
+                  "key": "pos",
+                  "value": "bottom"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create_a_new_Card_in_Left_List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "19a79751-4702-4c2e-8cb4-fcb9cf4e0f3d",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 400ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+                  "});\r",
+                  "pm.test(\"Поле id існує і є рядком\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"id\");\r",
+                  "  pm.expect(json.id).to.be.a(\"string\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "f7b4d528-72bd-4485-8d56-56dc19d97219",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/cards?idList=68b7096ce3ac7e5720252eee&key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "cards"
+              ],
+              "query": [
+                {
+                  "key": "idList",
+                  "value": "68b7096ce3ac7e5720252eee"
+                },
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create_a_New_Card_in_Right_List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "111f0aed-6a76-4ba4-b91b-cd2430adea8a",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 450ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(450);\r",
+                  "});\r",
+                  "pm.test(\"Поле id існує і є рядком\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"id\");\r",
+                  "  pm.expect(json.id).to.be.a(\"string\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "86f68aed-741b-474a-96a2-6e9a0635bea0",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/cards?idList=68b70a61e0be364a8cd742c8&key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "cards"
+              ],
+              "query": [
+                {
+                  "key": "idList",
+                  "value": "68b70a61e0be364a8cd742c8"
+                },
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "e49f5ea8-7af4-488e-8074-cbc90b550505"
+    },
+    {
+      "name": "Put",
+      "item": [
+        {
+          "name": "Update_Board_Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fc051fe4-61ed-4d48-97d8-1196e7f71361",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 800ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(800);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "32475af0-cc23-47b8-a214-826682c31a70",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/boards/68b7016ea803b4c81ae80516?key={{myKey}}&token={{myToken}}&name=Нове ім'я для дошки&desc=Стало трохи зрозуміліше з Postman",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "boards",
+                "68b7016ea803b4c81ae80516"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                },
+                {
+                  "key": "name",
+                  "value": "Нове ім'я для дошки"
+                },
+                {
+                  "key": "desc",
+                  "value": "Стало трохи зрозуміліше з Postman"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "514a93f8-0d2a-4768-8a31-6d8e889f4d52"
+    },
+    {
+      "name": "Delete",
+      "item": [
+        {
+          "name": "DeleteBoard",
+          "id": "d419e9c7-5f0d-4a34-96b3-fb8091507cd0",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/boards/68b70151c56f27e5d2ef1417?key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "boards",
+                "68b70151c56f27e5d2ef1417"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteList",
+          "id": "bf53a425-fb06-4698-a452-f8e65f794296",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/lists/68b705f2071b8b578f81d563/closed?key={{myKey}}&token={{myToken}}&value=true",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "lists",
+                "68b705f2071b8b578f81d563",
+                "closed"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                },
+                {
+                  "key": "value",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete_Card",
+          "id": "ec30372d-3820-4c94-88c2-ee0f1d5c06fe",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://api.trello.com/1/cards/68b70db309c13985c6bbe5c2?key={{myKey}}&token={{myToken}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "trello",
+                "com"
+              ],
+              "path": [
+                "1",
+                "cards",
+                "68b70db309c13985c6bbe5c2"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{myKey}}"
+                },
+                {
+                  "key": "token",
+                  "value": "{{myToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "55f4fe42-ddca-47bb-9e54-04c1ebea8d29"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "4b157682-c5af-4d2d-bd17-1eae036f1f19",
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "85778cac-953b-4c57-b6d0-0420aa167c30",
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "94c0f6cd-a21f-428f-afdb-afcec3b133d3",
+      "key": "myKey",
+      "value": "212fc3f4f30dc9590e62ec87745162ce",
+      "type": "string"
+    },
+    {
+      "id": "f570fe34-7745-4c3c-86f1-74a41a2f9af0",
+      "key": "myToken",
+      "value": "ATTAdd781bafb145e7d7f5e1db452c87e6f6211a0909548f2d7b73b48c7aad91a5afDFB3BF68",
+      "type": "string"
+    }
+  ]
+}

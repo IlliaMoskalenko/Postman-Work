@@ -1,0 +1,27 @@
+{
+  "info": {
+    "_postman_id": "7d6ee34d-9ad0-40ce-8508-e7512f0fd241",
+    "name": "My_Trello_Collections",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "get_all_boards",
+      "id": "69806f20-b222-4be3-a171-c0149e20c50c",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Create a board",
+      "id": "b5952933-fae8-4a64-9e69-27616ea00b10",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "info": {
+    "_postman_id": "d651a7e3-7e28-47c0-b193-e6da10ea8a00",
+    "name": "Test_Jira",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "coments",
+      "item": [
+        {
+          "name": "add_issue",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7bc8753-4293-4d37-a0dc-537755d8fce5",
+                "exec": [
+                  "let data = pm.response.json();\r",
+                  "pm.environment.set(\"issue_key\", data.key);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "02e7afe6-20f7-4418-8c43-e029de49d01a",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{api_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{email}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fields\": {\r\n    \"project\": { \"key\": \"{{project_key}}\" },\r\n    \"summary\": \"Test issue API\",\r\n    \"issuetype\": { \"name\": \"Task\" }\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/issue",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "issue"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add_comment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "dc64c7a5-f62b-494c-8d3d-8eaa48678f04",
+                "exec": [
+                  "let data = pm.response.json();\r",
+                  "pm.environment.set(\"comment_id\", data.id);\r",
+                  "console.log(\"Comment ID saved:\", data.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "3910d72b-165e-4e9a-87d7-25d14223e231",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{api_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{email}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"body\": {\r\n    \"type\": \"doc\",\r\n    \"version\": 1,\r\n    \"content\": [\r\n      {\r\n        \"type\": \"paragraph\",\r\n        \"content\": [\r\n          {\r\n            \"type\": \"text\",\r\n            \"text\": \"Коментар коментарем. Гарного дня 🚀\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/issue/{{issue_key}}/comment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "issue",
+                "{{issue_key}}",
+                "comment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "change_comment",
+          "id": "5fda3b86-531e-4eca-b69e-0a0b2a47d61e",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{api_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{email}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"body\": {\r\n    \"type\": \"doc\",\r\n    \"version\": 1,\r\n    \"content\": [\r\n      {\r\n        \"type\": \"paragraph\",\r\n        \"content\": [\r\n          { \"type\": \"text\", \"text\": \"Можливо вже гарного вечора)\" }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/issue/{{issue_key}}/comment/{{comment_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "issue",
+                "{{issue_key}}",
+                "comment",
+                "{{comment_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete_comment",
+          "id": "cc1d3510-8125-48dc-bf1a-a94de57a1564",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/issue/{{issue_key}}/comment/{{comment_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "issue",
+                "{{issue_key}}",
+                "comment",
+                "{{comment_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "76932593-ea74-4aff-9977-77292ad923a8"
+    },
+    {
+      "name": "create_project",
+      "item": [
+        {
+          "name": "create_project_keiki",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c81e25f3-8a9c-4bef-aa0c-70e402d50d18",
+                "exec": [
+                  "let responseData = pm.response.json();\r",
+                  "pm.environment.set(\"project_id\", responseData.id);\r",
+                  "pm.environment.set(\"project_key\", responseData.key);\r",
+                  "console.log(\"Project created with ID:\", responseData.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "cd1fe48a-c125-406f-8a04-f259461dc3e6",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{api_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{email}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"key\": \"{{project_key}}\",\r\n    \"name\": \"API Keiki World\",\r\n    \"projectTypeKey\": \"software\",\r\n    \"projectTemplateKey\": \"com.pyxis.greenhopper.jira:gh-simplified-scrum-classic\",\r\n    \"description\": \"This project was created via API\",\r\n    \"leadAccountId\": \"{{account_id}}\",\r\n    \"assigneeType\": \"PROJECT_LEAD\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/project",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "project"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete_project",
+          "id": "4751590d-bf8d-4fd3-8a75-87e6f1a60c7c",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{api_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{email}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/rest/api/3/project/{{project_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "rest",
+                "api",
+                "3",
+                "project",
+                "{{project_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "82e59174-411a-43d3-819b-18a8119cef8c"
+    },
+    {
+      "name": "get_info",
+      "id": "42bf2ea6-da1a-420e-9d38-19db1ecab10c",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{api_token}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{email}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/rest/api/3/project",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "rest",
+            "api",
+            "3",
+            "project"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "moskalenkoila748@gmail.com",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "ATATT3xFfGF0Df70gzcUdve517wGlJXFThw3k7AFHaSunII5le5gRs-5z_hq2DQYWRhgSF50LuidG9pkliUTim28tsC2600oDGhETlX-kau47KrFP5rQB50ue90lB3FcsVu14Asb_JMAKZbHRPjteBfVNy8miyZz2qHh_voIrlCepfliPqNW8X8=341AE2CC",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "871a50e9-e1c8-4244-85ca-29d44bcd1093",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "5251ab40-1f98-4218-ae80-ba659c551631",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

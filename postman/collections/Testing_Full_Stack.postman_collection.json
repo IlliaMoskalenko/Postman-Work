@@ -1,0 +1,18 @@
+{
+  "info": {
+    "_postman_id": "5ba6311a-996a-4626-889f-4051084e1111",
+    "name": "Testing_Full_Stack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "id": "2cf5a847-04ad-47db-9f14-947cfc61be48",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

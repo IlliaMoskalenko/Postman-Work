@@ -1,0 +1,223 @@
+{
+  "info": {
+    "_postman_id": "35547cbc-c259-44f2-ba4e-c88fb623bc0e",
+    "name": "Mythos_Sandbox_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Entitiles",
+      "item": [
+        {
+          "name": "Get_all_Etities",
+          "id": "60fd98df-c39b-4db4-bb46-e2b4cfefbab1",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Create_new_Etities",
+          "id": "9de308b5-558b-416c-90e2-0389e7a1b8fc",
+          "request": {
+            "auth": {
+              "type": "jwt",
+              "jwt": [
+                {
+                  "key": "header",
+                  "value": "{eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN0cm9uZ0dvZCIsImlhdCI6MTc3MDYyMzY0MywiZXhwIjoxNzcwNjI3MjQzfQ.iPuYIW7mK4OcAFxm2i3R-U_iqTDDoSUHdk-TIerPNFU}",
+                  "type": "string"
+                },
+                {
+                  "key": "addTokenTo",
+                  "value": "queryParam",
+                  "type": "string"
+                },
+                {
+                  "key": "algorithm",
+                  "value": "HS256",
+                  "type": "string"
+                },
+                {
+                  "key": "isSecretBase64Encoded",
+                  "value": false,
+                  "type": "boolean"
+                },
+                {
+                  "key": "payload",
+                  "value": "{}",
+                  "type": "string"
+                },
+                {
+                  "key": "headerPrefix",
+                  "value": "Bearer",
+                  "type": "string"
+                },
+                {
+                  "key": "queryParamKey",
+                  "value": "token",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Flamme\",\r\n  \"category\": \"gods\",\r\n  \"desc\": \"Gods of songs.\",\r\n  \"img\": \"https://frieren.fandom.com/wiki/Flamme?file=Flamme+anime+profile.png\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.qasandbox.ru/api/mythology",
+              "protocol": "https",
+              "host": [
+                "api",
+                "qasandbox",
+                "ru"
+              ],
+              "path": [
+                "api",
+                "mythology"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change_Etities",
+          "id": "cbf573c8-6f6e-409d-af12-2852051e16c6",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN0cm9uZ0dvZCIsImlhdCI6MTc3MDYyNDk4NiwiZXhwIjoxNzcwNjI4NTg2fQ.jMK39BqRKTyTGI3kWOIGGW_w21pWZ0ackfQeBd6gAbU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Flamme\",\r\n  \"category\": \"god\",\r\n  \"desc\": \"God of dances.\",\r\n  \"img\": \"https://i.redd.it/lt01qkjot86d1.jpeg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.qasandbox.ru/api/mythology/45",
+              "protocol": "https",
+              "host": [
+                "api",
+                "qasandbox",
+                "ru"
+              ],
+              "path": [
+                "api",
+                "mythology",
+                "45"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "45",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Litle_Change",
+          "id": "6a548cad-2eea-4e6f-85d6-dcf9439b1f18",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Expel_dryness",
+          "id": "b7764c90-23fa-44da-9ca6-551f8fc6d07f",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "id": "5de01651-9246-414b-b6b2-88b7dec53897"
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Info_Sandbox",
+          "id": "f86e5637-c7e1-4054-b980-82e2fd9c2636",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Registration",
+          "id": "23854bbd-963c-4e6a-8f6c-b57fb57af35b",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"StrongGod\",\r\n  \"password\": \"StrongGod1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.qasandbox.ru/register",
+              "protocol": "https",
+              "host": [
+                "api",
+                "qasandbox",
+                "ru"
+              ],
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get_Token",
+          "id": "13b883b9-5557-4bdc-9dd4-e6c215f79465",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "id": "06d13acf-f55c-4be7-9a32-d47f54ae2173"
+    }
+  ]
+}
